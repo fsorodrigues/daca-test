@@ -177,7 +177,7 @@ function update(index) {
 
 };
 
-var offset = - (3.5 * svgHeight[1]);
+var offset = - (2.8 * svgHeight[1]);
 
 d3.graphScroll()
   .sections(d3.selectAll(".trigger"))
