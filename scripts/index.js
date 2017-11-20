@@ -75,7 +75,7 @@ d3.csv("./daca_timeline.csv", function(dataIn){
   scaleY.domain([d3.max(dataIn.map(function(d){ return d.date })), d3.min(dataIn.map(function(d){ return d.date }))]);
 
   d3.select(".axis")
-    .call(d3.axisLeft(scaleY).ticks(d3.timeYear.every(1)).tickSize(0));
+    .call(d3.axisLeft(scaleY).ticks(d3.timeYear.every(2)).tickSize(0));
 
   d3.selectAll(".tick text").attr("dy", -5).attr("dx", 23);
 
