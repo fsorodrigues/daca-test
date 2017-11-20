@@ -163,12 +163,17 @@ function update(index) {
         .transition()
         .duration(1000)
         .attr("y", function(d) { return scaleY(d.date); })
-        .attr("height", svgHeight[indexer(index)]/(indexer(index)*500))
+        .attr("height", svgHeight[indexer(index)]/(indexer(index)*500));
 
     d3.select("#svg1")
       .transition()
       .duration(1000)
-      .attr("height", svgHeight[indexer(index)])
+      .attr("height", svgHeight[indexer(index)]);
+
+    svg.selectAll(".circles")
+       .transition()
+       .duration(1000)
+       .attr("cy", function(d,i) { return scaleY(d); });
 
 };
 
