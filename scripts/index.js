@@ -6,6 +6,8 @@ var height = document.getElementById("svg1").clientHeight;
 
 var svgHeight = [ 500, 500, 6000 ];
 
+var factorHeight = 300;
+
 var marginLeft = 0;
 var marginTop = 70;
 
@@ -24,7 +26,7 @@ svg.append("g")
 
 d3.select(".domain").attr("opacity", .5).attr("stroke-dasharray", "1,5");
 
-function positionY(value) {
+function positionX(value) {
   if (value == "positive") {
     return 1;
   } else if (value == "negative") {
@@ -62,13 +64,13 @@ d3.csv("./daca_timeline.csv", function(dataIn){
 
   dataIn.forEach(function(d){
       d.date = parser(d.start_date);
-      d.posY = positionY(d.effect);
+      d.posX = positionX(d.effect);
       d.color = coloring(d.effect);
   });
 
   var scaleX = d3.scaleLinear()
                   .range([(width/2 - (width/4 + 5)),(width/2 + 5)])
-                  .domain(d3.extent(dataIn, function(d){ return d.posY; }));
+                  .domain(d3.extent(dataIn, function(d){ return d.posX; }));
 
   // console.log(dataIn);
 
@@ -88,9 +90,9 @@ d3.csv("./daca_timeline.csv", function(dataIn){
           .attr("class", "box inactive")
           .attr("id", function(d,i) { return "entry-" + (i + 1) })
           .attr("y", function(d) { return scaleY(d.date); })
-          .attr("x", function(d) { return scaleX(d.posY); })
+          .attr("x", function(d) { return scaleX(d.posX); })
           .attr("width", width/4)
-          .attr("height", svgHeight[1]/400)
+          .attr("height", svgHeight[1]/factorHeight)
           .attr("rx", 5)
           .attr("ry", 5)
           .attr("fill", function(d) { return d.color; })
@@ -117,11 +119,9 @@ d3.csv("./daca_timeline.csv", function(dataIn){
                          .style("background", d.color);
 
                   tooltip.html("<p>" + d.start_date +"</p><p><b>" + d.title + "</b></p> <p>" + d.text + "</p>")
-                         .style("left", (d3.event.pageX - 320) + "px")
-                         .style("top", (d3.event.pageY - 160) + "px");
+                         .style("left", (d3.event.pageX - 300) + "px")
+                         .style("top", (d3.event.pageY - 10) + "px");
               }
-
-
           });
 
     svg.selectAll(".circles")
@@ -144,8 +144,7 @@ function update(index) {
 
     function inverter(index) {
       if (index == 0) { return 2 }
-      else if (index == 1) { return 2 }
-      else { return 1 }
+      else { return 3 - index }
     };
 
     scaleY.range([0, (svgHeight[indexer(index)] - 2 * marginTop)]);
@@ -163,7 +162,7 @@ function update(index) {
         .transition()
         .duration(1000)
         .attr("y", function(d) { return scaleY(d.date); })
-        .attr("height", svgHeight[indexer(index)]/(indexer(index)*500));
+        .attr("height", svgHeight[indexer(index)]/(indexer(index)*factorHeight));
 
     d3.select("#svg1")
       .transition()
@@ -181,11 +180,11 @@ var offset = - (2.8 * svgHeight[1]);
 
 d3.graphScroll()
   .sections(d3.selectAll(".trigger"))
-  // .graph(d3.select(".svg-container"))
+  .graph(d3.select(".svg-container"))
   .offset(offset)
-  .on("active", function(i) { console.log(i + " active");
-                              var selection = d3.select(".graph-scroll-active").attr("class");
-                              console.log( selection )
-
-                              update(i)
+  .on("active", function(i) { update(i);
+                              glow(i);
                             });
+function glow(i) {
+  d3.select("#entry-15").attr("class", "box glow-" + i);
+}

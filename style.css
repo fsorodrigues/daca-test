@@ -1,3 +1,16 @@
+mark {
+  background-color: lightgrey;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+mark:hover {
+  background-color: red;
+  font-weight: bold;
+}
+
+
 /* --------- PAGE BASE */
 
 html {
@@ -16,7 +29,8 @@ body {
 
 h2, /* subhead */
 h3, /* byline */
-h4 { /* timeline header */
+h4, /* timeline header */
+h5 { /* teaser header */
   font-family: "Benton Sans", sans-serif;
 }
 
@@ -37,7 +51,6 @@ h2.subhead { /* subhead */
   font-family: "Benton Sans", sans-serif;
   font-size: 4.0rem;
   font-weight: 400;
-
 }
 
 h3.byline { /* byline */
@@ -46,6 +59,12 @@ h3.byline { /* byline */
   /*font-weight: bold;*/
   color: grey;
   margin-bottom: 6rem;
+}
+
+h4.crosshead {
+  font-family: "Benton Sans", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
 h4.timeline-title { /* timeline header */
@@ -57,6 +76,22 @@ h4.timeline-title { /* timeline header */
   margin-bottom: 0;
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
+}
+
+h5.teaser-header { /* story teaser header */
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0 20px 0 40px
+}
+
+h5.teaser-info { /* story teaser text snippet */
+  font-size: 1.5rem;
+  font-family: "Georgia", serif;
+  font-style: italic;
+}
+
+h5.teaser-more { /* story teaser "More on The Margins" text */
+  font-size: 1.4rem;
 }
 
 p.timeline-explainer { /* timeline text body */
@@ -81,7 +116,9 @@ span.red { /* color coding for timeline */
 
 .tooltip p { /* timeline tooltip text body */
   font-family: "Benton Sans", sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 2.8rem;
   margin: 0;
   color: #EEEEEE;
 }
@@ -91,7 +128,6 @@ a { /* link */
   text-decoration: none;
   font-weight: bold;
 }
-
 
 a:hover { /* active link */
   color: #ED1C24;
@@ -103,9 +139,10 @@ a:visited { /* visited link */
   text-decoration: none;
 }
 
-.img-caption { /* caption for images */
+p.img-caption { /* caption for images */
   font-family: "Georgia", serif;
   font-size: 1.5rem;
+  line-height: 2rem;
   color: #8e8e8e;
 }
 
@@ -118,26 +155,48 @@ span.img-credit { /* image credit in captions */
 
 /* --------- PAGE ELEMENTS */
 
-img {
+img.hero-img {
   width: 100%;
 }
 
-.img-container {
+img.img { /* images in the body are 100% of the body text (6 columns wide) */
+  width: 100%;
+}
+
+div.teaser-box { /* container for teaser */
+  display: flex;
+  margin-bottom: 2.5rem;
+}
+
+div.bg-teaser {
+  background-color: #ED1C24;
+  position: relative;
+  left: -40px;
+}
+
+img.teaser { /* images in the body are 30% of the body text */
+  width: 30%;
+  height: 30%;
+  margin-bottom: 2.5rem;
+  margin-right: 2rem;
+}
+
+.hero-img-container { /* container for opening image */
   margin-bottom: 6rem;
   height: 100%;
   width: 100%;
 }
 
-.timeline {
+.timeline { /* container for timeline */
   background-color: gainsboro;
   margin-top: 400px;
 }
 
-.tooltip {
+.tooltip { /* container for timeline tooltip  */
   position: absolute;
-  width: 250px;
+  width: 230px;
   padding: 1rem 1rem 2rem 1rem;
-  border-radius: 3px
+  border-radius: 3px;
 }
 
 .red-bar {
@@ -160,4 +219,19 @@ img {
 
 .sidebar {
   padding-left: 2%
+}
+
+/* --------- ANIMATIONS */
+
+@-webkit-keyframes greenPulse {
+  from { fill: #ED1C24; stroke: #ED1C24; }
+  50% { fill: #ffb515; stroke: #ED1C24; stroke-width: .5px; }
+  to { fill: #ED1C24; stroke: #ED1C24; }
+}
+
+rect.box.glow-2 {
+  -webkit-animation-name: greenPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 15;
 }
