@@ -4,7 +4,7 @@ var height = document.getElementById("svg1").clientHeight;
 // console.log(width);
 // console.log(height);
 
-var svgHeight = [ 500, 500, 6000 ];
+var svgHeight = [ 500, 500, 6500 ];
 
 var factorHeight = 300;
 
