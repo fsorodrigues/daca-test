@@ -1,12 +1,12 @@
 mark {
-  background-color: lightgrey;
+  background-color: #f68d91;
   padding: 5px 10px;
   font-weight: bold;
   border-radius: 10px;
 }
 
 mark:hover {
-  background-color: red;
+  background-color: #ED1C24;
   font-weight: bold;
 }
 
@@ -225,7 +225,7 @@ img.teaser { /* images in the body are 30% of the body text */
 
 @-webkit-keyframes greenPulse {
   from { fill: #ED1C24; stroke: #ED1C24; }
-  50% { fill: #ffb515; stroke: #ED1C24; stroke-width: .5px; }
+  50% { fill: #f68d91; stroke: #f68d91; stroke-width: .5px; }
   to { fill: #ED1C24; stroke: #ED1C24; }
 }
 
