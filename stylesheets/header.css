@@ -144,7 +144,12 @@ a:hover
 #menu li
 {
   padding: 10px 0;
-  font-size: 22px;
+  font-size: 2.7rem;
+  line-height: 2.7rem;
+  border-bottom: solid 1px darkgrey;
+  font-family: “BentonSansComp-Bold”,“Helvetica”,sans-serif;
+  text-transform: uppercase;
+
 }
 
 /*

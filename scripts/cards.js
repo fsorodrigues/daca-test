@@ -41,7 +41,7 @@ queue()
 
         length = dataIn.length;
 
-        console.log(length);
+        // console.log(length);
 
         $(function(){ $(".card").flip(); });
 

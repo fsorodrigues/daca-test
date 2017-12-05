@@ -45,7 +45,7 @@ function coloring(value) {
 var tooltip = d3.select("body")
                 .append("div")
                 .attr("class", "tooltip")
-                .attr("opacity", 0)
+                .style("opacity", 0)
                 .html("")
                 .on("click", function(d) {
                   tooltip.transition()
@@ -91,6 +91,9 @@ d3.csv("./daca_timeline.csv", function(dataIn){
           .attr("id", function(d,i) { return "entry-" + (i + 1) })
           .attr("y", function(d) { return scaleY(d.date); })
           .attr("x", function(d) { return scaleX(d.posX); })
+          .attr("value-date", function(d) { return d.start_date; })
+          .attr("value-title", function(d) { return d.title; })
+          .attr("value-text", function(d) { return d.text; })
           .attr("width", width/4)
           .attr("height", svgHeight[1]/factorHeight)
           .attr("rx", 5)
@@ -118,7 +121,7 @@ d3.csv("./daca_timeline.csv", function(dataIn){
                          .style("opacity", 1)
                          .style("background", d.color);
 
-                  tooltip.html("<p>" + d.start_date +"</p><p><b>" + d.title + "</b></p> <p>" + d.text + "</p>")
+                  tooltip.html("<div class='close'></div><p>" + d.start_date +"</p><p><b>" + d.title + "</b></p> <p>" + d.text + "</p>")
                          .style("left", (d3.event.pageX - 300) + "px")
                          .style("top", (d3.event.pageY - 10) + "px");
               }
@@ -176,15 +179,41 @@ function update(index) {
 
 };
 
-var offset = - (3.8 * svgHeight[1]);
+var offset = - (4.0 * svgHeight[1]);
 
 d3.graphScroll()
   .sections(d3.selectAll(".trigger"))
   .graph(d3.select(".svg-container"))
   .offset(offset)
   .on("active", function(i) { update(i);
-                              glow(i);
-                            });
-function glow(i) {
-  d3.select("#entry-15").attr("class", "box glow-" + i);
-}
+                              if (i == 2) {
+                                showTooltip()
+                              }
+                              });
+
+function showTooltip() {
+    var rect = document.getElementById("entry-15").getBoundingClientRect();
+
+    var pos = {top: (rect.top + window.scrollY) , left: (rect.left + window.scrollX) };
+
+    d3.selectAll(".box").attr("class", "box inactive");
+
+    var selection = d3.select("#entry-15")
+
+    selection.attr("class", "box active");
+
+    var fill = selection.attr("fill")
+
+    var start_date = selection.attr("value-date");
+    var title = selection.attr("value-title");
+    var text = selection.attr("value-text");
+
+    tooltip.transition()
+           .duration(350)
+           .style("background", fill)
+           .style("opacity", 1);
+    //
+    tooltip.html("<div class='close'></div><p>" + start_date +"</p><p><b>" + title + "</b></p> <p>" + text + "</p>")
+           .style("left", (pos.left - 300) + "px")
+           .style("top", (pos.top - 10) + "px");
+};
