@@ -256,12 +256,16 @@ div.bg-teaser {
 
 img.teaser { /* images in the body are 30% of the body text */
   width: 30%;
-  /*height: 30%;*/
+  height: 30%;
   margin-bottom: 2.5rem;
   margin-right: 2rem;
 }
 
 @media (max-width: 400px) {
+  div.teaser-box { /* container for teaser */
+    display:block;
+    margin-bottom: 2.5rem;
+  }
   img.teaser {
     width: 80%;
     margin-bottom: 0rem;
