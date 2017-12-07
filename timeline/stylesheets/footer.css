@@ -1,0 +1,19 @@
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h6.TheMargins_footer {
+    font-family: "Sentinel Medium","Georgia",serif;
+    color: #666;
+    text-transform: none;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #666;
+    padding: 20px;
+    margin-top: 10%;
+}
+
+span.TheMargins_footer {
+    font-family: "BentonSansComp-Bold","Helvetica",sans-serif;
+    font-size: 1.5rem;
+    color: black;
+}

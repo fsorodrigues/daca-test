@@ -39,9 +39,10 @@ h2.subhead { /* subhead */
   font-size: 8.0rem;
   font-weight: 400;
   text-transform: uppercase;
+  margin-top: 8.0rem;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
   h2.subhead {
     font-size: 4rem;
   }
@@ -52,7 +53,7 @@ h3.byline { /* byline */
   font-size: 1.7rem;
   /*font-weight: bold;*/
   color: grey;
-  margin-bottom: 6rem;
+  /*margin-bottom: 6rem;*/
 }
 
 h4.crosshead {
@@ -102,10 +103,9 @@ h5.teaser-more { /* story teaser "More on The Margins" text */
 }
 
 p.timeline-explainer { /* timeline text body */
-  font-family: "Benton Sans", sans-serif;
-  font-size: 1.7rem;
-  line-height: 2.3rem;
-  padding: 1rem 1rem 0 1rem;
+  font-family: "Georgia", serif;
+  font-size: 2.2rem;
+  line-height: 3.2rem;
   margin-bottom: 0;
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
@@ -261,7 +261,7 @@ img.teaser { /* images in the body are 30% of the body text */
   margin-right: 2rem;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
   div.teaser-box { /* container for teaser */
     display:block;
     margin-bottom: 2.5rem;
@@ -294,33 +294,15 @@ img.teaser { /* images in the body are 30% of the body text */
   margin-top: 750px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
   .timeline {
     display: none;
-  }
-
-  svg#line {
-    display: none;
-  }
-
-  .card-container {
-    display: none
-  }
-
-  .tooltip {
-    display: none;
-  }
-}
-
-@media (min-width: 501px) {
-  .teaser-timeline {
-    display: none
   }
 }
 
 .tooltip { /* container for timeline tooltip  */
   position: absolute;
-  width: 230px;
+  width: 40%;
   padding: 1rem 1rem 2rem 1rem;
   border-radius: 3px;
 }
@@ -366,7 +348,6 @@ img.teaser { /* images in the body are 30% of the body text */
   width: 800px;
   height: 600px;
   z-index: 10;
-  margin-top: 180px;
 }
 
 #brendaCard {
@@ -430,6 +411,9 @@ img.teaser { /* images in the body are 30% of the body text */
   text-align: right;
 }
 
+.sidebar {
+  margin-top: 2.0rem
+}
 
 /* --------- ANIMATIONS */
 
